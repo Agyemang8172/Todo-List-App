@@ -14,7 +14,7 @@ const TodoItem = (  { todo, onToggleComplete, onRemoveTodo } ) => {
                   onClick={() => onToggleComplete(todo.id)}
                   className={`${todo.completed  ? 'bg-yellow-500 hover:bg-yellow-600':  'bg-green-500  hover:bg-green-600' }`}
                 >
-                    {todo.completed  ? 'Undo' : 'complete'}
+                    {todo.completed  ? 'Undo' : 'Complete'}
                 </button>
                 <button
                  onClick = {()=> onRemoveTodo(todo.id )}

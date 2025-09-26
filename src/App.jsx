@@ -1,6 +1,9 @@
-import React, { use, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from './Component/Header';
+import TodoForm from './Component/TodoForm';
 import TodoList from './Component/TodoList';
+
+
 
 const App = () => {
   const [todos,setTodos]  = useState(()=> {
@@ -17,7 +20,7 @@ const App = () => {
      const handleAddTodo  =  (text)  =>  {
       setTodos((prevTodos) => [
         ...prevTodos,
-        { id:Date.now(), text  ,completed: false}
+        { id:Date.now(), text  , completed: false}
       ])
     };
 
@@ -25,7 +28,7 @@ const App = () => {
    const handleToggleComplete = (id)  => {
     setTodos((prevTodos)  =>
        prevTodos.map((todo) =>
-          todo.id === id ? {...todo, completed :  todo.completed} : todo 
+          todo.id === id ? {...todo, completed:  !todo.completed } : todo 
       )
     );
   }
@@ -43,12 +46,12 @@ const App = () => {
       <div className='max-w-xl mx-auto'>
         <Header  />
           <div className='my-6'>
-            <Todoform  onAddTodo = {onAddTodo} />
+            <TodoForm  onAddTodo = {handleAddTodo} />
           </div>
           <TodoList  
             todos = {todos}
-            onToggleComple={handleToggleComplete}
-            onRemovetodo ={handleRemoveTodo}
+            onToggleComplete={handleToggleComplete}
+            onRemoveTodo ={handleRemoveTodo}
           
           />
 
